@@ -6,7 +6,6 @@ plugins {
 }
 
 group = 'com.travelchat'
-version = ''
 
 java {
     sourceCompatibility = '17'
