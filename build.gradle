@@ -6,15 +6,29 @@ plugins {
 }
 
 group = 'com.chatico'
-version = '0.0.1-SNAPSHOT'
+version = ''
 
 java {
     sourceCompatibility = '17'
 }
 
-repositories {
-    mavenCentral()
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url "https://repo.spring.io/snapshot" }
+    maven { url "https://repo.spring.io/milestone" }
+}
+
+ext {
+    set('springCloudVersion', "2022.0.3")
+}
+
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -33,6 +47,19 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+springBoot {
+    mainClass = 'com.travelchat.userchat.TravelChatApplication'
+}
+
+bootJar {
+    archiveFileName = 'TravelChat.jar'
 }
 
 tasks.named('test') {
