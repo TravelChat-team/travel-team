@@ -1,21 +1,14 @@
-FROM eclipse-temurin:17-jdk-alpine as build
-WORKDIR /workspace/app
+FROM ubuntu:latest AS build
 
-COPY . /workspace/app
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-COPY gradlew .
-COPY .gradle .gradle
-COPY build.gradle .
-COPY src src
+#RUN ./gradlew bootJar --no-daemon
 
-# Run Gradle build and skip tests
-RUN ./gradlew buildJar
+FROM openjdk:17-jdk
 
-# Create a directory for extracted dependencies and extract JARs
-RUN mkdir -p build/dependency && (cd build/dependency; jar -xf ../build/libs/*.jar)
-
-RUN ./gradlew bootJar
-
-COPY build/travelchat.jar app.jar
 EXPOSE 8666
+
+COPY --from=build /build/libs/travelchat.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
