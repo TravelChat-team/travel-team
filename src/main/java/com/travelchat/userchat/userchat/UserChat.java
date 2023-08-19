@@ -1,0 +1,152 @@
+package com.travelchat.userchat.userchat;
+
+
+
+import com.travelchat.userchat.auth.AuthenticationType;
+import com.travelchat.userchat.token.Token;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
+
+@Entity
+@Table(name = "user_chat")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+//@Validated
+public class UserChat implements UserDetails {
+//public class UserChat {
+
+
+    @SequenceGenerator(
+            name = "userchat_sequence",
+            sequenceName = "userchat_sequence",
+            allocationSize = 1
+    )
+
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "userchat_sequence"
+    )
+    @Id
+    private Long id;
+
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String email;
+    private String password;
+
+    private boolean enabled = false;
+    private boolean locked = false;
+
+   private String userPic;
+
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "auth_type")
+    private AuthenticationType authType;
+
+    @OneToMany(mappedBy = "userChat")
+    private List<Token> tokens;
+
+
+//    @OneToMany(mappedBy = "userChat", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<Permission> permissions = new ArrayList<>();
+
+
+    private String locale;
+
+    private LocalDate birthday;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime lastVisit;
+
+    private boolean isAccountNonExpired;
+    private boolean isAccountNonLocked;
+    private boolean isCredentialsNonExpired;
+
+
+//    @OneToMany(
+//            mappedBy = "userChat",
+//            orphanRemoval = true,
+//            cascade = CascadeType.ALL
+//    )
+////    @JoinColumn(name = "group_chat_id")
+//    private Set<UserContacts> contacts = new TreeSet<>();
+////
+    public enum Gender{
+        MALE, FEMALE
+    }
+
+//    public UserChat(String firstName,
+//                   String lastName,
+//                   String email,
+//                   String password,
+//                   Role role) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.password = password;
+//        this.role = role;
+//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserChat userChat = (UserChat) o;
+        return this.id != null && Objects.equals(id, userChat.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority authority =
+                new SimpleGrantedAuthority(role.name());
+        return Collections.singletonList(authority);
+    }
+
+    public boolean isAccountNonExpired() {
+        return isAccountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return isAccountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return isCredentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+}
