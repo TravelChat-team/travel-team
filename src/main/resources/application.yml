@@ -2,13 +2,13 @@ server:
   port: 8666
 spring:
   datasource:
-#    url: jdbc:postgresql://localhost:54105/jwt_auth_db
-#    username: postgres
-#    password: postgres
-    url: jdbc:postgresql://dpg-cjges641ja0c73cerji0-a:5432/travelchat_db
-    username: team
-    password: NMzyacWG3qB1FL3gbWuWxI8IETszeSvF
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:54105/jwt_auth_db
+    username: postgres
+    password: postgres
+#    url: jdbc:postgresql://dpg-cjges641ja0c73cerji0-a:5432/travelchat_db
+#    username: team
+#    password: NMzyacWG3qB1FL3gbWuWxI8IETszeSvF
+#    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
@@ -19,16 +19,16 @@ spring:
         default_schema: public
 
 
-  flyway:
-    baseline-on-migrate: true
-    locations: classpath:src/main/resources/db/migration
-
-    create-schemas: false
-    init-sql: CREATE IF NOT EXISTS flyway_history_schema
-    schemas: flyway_history_schema,public
-    user: postgres
-    password: postgres
-    default-schema: public
+#  flyway:
+#    baseline-on-migrate: true
+#    locations: classpath:src/main/resources/db/migration
+#
+#    create-schemas: false
+#    init-sql: CREATE IF NOT EXISTS flyway_history_schema
+#    schemas: flyway_history_schema,public
+#    user: postgres
+#    password: postgres
+#    default-schema: public
 
   security:
     oauth2:
