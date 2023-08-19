@@ -5,7 +5,7 @@ plugins {
     id 'io.freefair.lombok' version '8.1.0'
 }
 
-group = 'com.chatico'
+group = 'com.travelchat'
 version = ''
 
 java {
@@ -24,6 +24,8 @@ repositories {
     maven { url "https://repo.spring.io/snapshot" }
     maven { url "https://repo.spring.io/milestone" }
 }
+
+
 
 ext {
     set('springCloudVersion', "2022.0.3")
@@ -59,7 +61,7 @@ springBoot {
 }
 
 bootJar {
-    archiveFileName = 'TravelChat.jar'
+    archiveFileName = 'travelchat.jar'
 }
 
 tasks.named('test') {
