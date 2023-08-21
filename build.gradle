@@ -60,7 +60,7 @@ springBoot {
 
 
 bootJar {
-    mainClass = 'com.travelchat.TravelChatApplication'
+    archiveFileName = 'TravelChat.jar'
 }
 
 tasks.named('test') {
