@@ -58,7 +58,6 @@ springBoot {
     mainClass = 'com.travelchat.TravelChatApplication'
 }
 
-
 bootJar {
     archiveFileName = 'TravelChat.jar'
 }
