@@ -3,12 +3,12 @@ server:
 #  port: 8080
 spring:
   datasource:
-#    url: jdbc:postgresql://localhost:54105/jwt_auth_db
-#    username: postgres
-#    password: postgres
-    url: jdbc:postgresql://dpg-cjho5t51a6cs739esnp0-a.oregon-postgres.render.com:5432/travelchat_db_rf6t
-    username: travelchat_db_rf6t_user
-    password: Fv4WPxlaMp4fTPwg3FRuzLijPRirLMlq
+    url: jdbc:postgresql://localhost:54105/jwt_auth_db
+    username: postgres
+    password: postgres
+#    url: jdbc:postgresql://dpg-cjho5t51a6cs739esnp0-a.oregon-postgres.render.com:5432/travelchat_db_rf6t
+#    username: travelchat_db_rf6t_user
+#    password: Fv4WPxlaMp4fTPwg3FRuzLijPRirLMlq
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
@@ -49,23 +49,23 @@ spring:
 #    port: 1025
 #    username: hello
 #    password: hello
-#  mail:
-#    host: smtp-relay.brevo.com
-#    port: 587
-#    username: growcode007@gmail.com
-#    password: cDjbzk0YPC6IrUVT
-#
-#    properties:
-#      mail:
-#        smtp:
-##          ssl:
-##            trust: "*"
-#          auth: true
-#          starttls:
-#            enable: true
-#          connectiontimeout: 5000
-#          timeout: 3000
-#          writetimeout: 5000
+  mail:
+    host: smtp-relay.brevo.com
+    port: 587
+    username: growcode007@gmail.com
+    password: cDjbzk0YPC6IrUVT
+
+    properties:
+      mail:
+        smtp:
+#          ssl:
+#            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 
 # =========================== GCP VARIABLES ================================
 # Conditional properties setup
