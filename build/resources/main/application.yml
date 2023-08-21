@@ -1,6 +1,6 @@
 server:
-#  port: 8666
-  port: 8080
+  port: 8666
+#  port: 8080
 spring:
   datasource:
 #    url: jdbc:postgresql://localhost:54105/jwt_auth_db
