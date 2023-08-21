@@ -25,7 +25,6 @@ repositories {
 }
 
 
-
 ext {
     set('springCloudVersion', "2022.0.3")
 }
