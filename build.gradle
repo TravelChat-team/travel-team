@@ -56,11 +56,12 @@ dependencyManagement {
     }
 }
 springBoot {
-    mainClass = 'com.travelchat.userchat.TravelChatApplication'
+    mainClass = 'com.travelchat.TravelChatApplication'
 }
 
+
 bootJar {
-    archiveFileName = 'travelchat.jar'
+    mainClass = 'com.travelchat.TravelChatApplication.java'
 }
 
 tasks.named('test') {

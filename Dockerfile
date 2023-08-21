@@ -10,5 +10,5 @@ FROM openjdk:17-jdk
 
 EXPOSE 8666
 
-COPY --from=build /build/libs/travelchat.jar app.jar
+COPY --from=build /build/libs/TravelChat.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
