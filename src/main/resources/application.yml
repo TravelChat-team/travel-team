@@ -49,23 +49,23 @@ spring:
 #    port: 1025
 #    username: hello
 #    password: hello
-#  mail:
-#    host: smtp-relay.brevo.com
-#    port: 587
-#    username: growcode007@gmail.com
-#    password: cDjbzk0YPC6IrUVT
-#
-#    properties:
-#      mail:
-#        smtp:
-##          ssl:
-##            trust: "*"
-#          auth: true
-#          starttls:
-#            enable: true
-#          connectiontimeout: 5000
-#          timeout: 3000
-#          writetimeout: 5000
+  mail:
+    host: smtp-relay.brevo.com
+    port: 587
+    username: growcode007@gmail.com
+    password: cDjbzk0YPC6IrUVT
+
+    properties:
+      mail:
+        smtp:
+#          ssl:
+#            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 
 # =========================== GCP VARIABLES ================================
 # Conditional properties setup
