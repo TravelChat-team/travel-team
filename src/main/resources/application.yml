@@ -5,7 +5,7 @@ spring:
 #    url: jdbc:postgresql://localhost:54105/jwt_auth_db
 #    username: postgres
 #    password: postgres
-    url: jdbc:postgresql://dpg-cjges641ja0c73cerji0-a:5432/travelchat_db
+    url: jdbc:postgresql://team:NMzyacWG3qB1FL3gbWuWxI8IETszeSvF@dpg-cjges641ja0c73cerji0-a/travelchat_db
     username: team
     password: NMzyacWG3qB1FL3gbWuWxI8IETszeSvF
     driver-class-name: org.postgresql.Driver
