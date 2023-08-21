@@ -1,0 +1,84 @@
+server:
+  port: 8666
+#  port: 8080
+spring:
+  datasource:
+#    url: jdbc:postgresql://localhost:54105/jwt_auth_db
+#    username: postgres
+#    password: postgres
+    url: jdbc:postgresql://dpg-cjho5t51a6cs739esnp0-a.oregon-postgres.render.com:5432/travelchat_db_rf6t
+    username: travelchat_db_rf6t_user
+    password: Fv4WPxlaMp4fTPwg3FRuzLijPRirLMlq
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+        default_schema: public
+
+
+#  flyway:
+#    baseline-on-migrate: true
+#    locations: classpath:src/main/resources/db/migration
+#
+#    create-schemas: false
+#    init-sql: CREATE IF NOT EXISTS flyway_history_schema
+#    schemas: flyway_history_schema,public
+#    user: postgres
+#    password: postgres
+#    default-schema: public
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: 178882648011-9ah79uc68ha8bhtvmk2hkg0jvpfpm4or.apps.googleusercontent.com
+            clientSecret: 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
+            redirect-uri: http://localhost:8666/login/oauth2/code/google
+            scope:
+              - email
+              - profile
+
+
+#  mail:
+#    host: localhost
+#    port: 1025
+#    username: hello
+#    password: hello
+#  mail:
+#    host: smtp-relay.brevo.com
+#    port: 587
+#    username: growcode007@gmail.com
+#    password: cDjbzk0YPC6IrUVT
+#
+#    properties:
+#      mail:
+#        smtp:
+##          ssl:
+##            trust: "*"
+#          auth: true
+#          starttls:
+#            enable: true
+#          connectiontimeout: 5000
+#          timeout: 3000
+#          writetimeout: 5000
+
+# =========================== GCP VARIABLES ================================
+# Conditional properties setup
+
+gcp:
+  vars:
+    admin.user: ${ADMIN_USERNAME:test@gmail.com}
+    admin.password: ${ADMIN_PASSWORD:12345}
+
+application:
+  security:
+    jwt:
+      secret-key: c40d1f7126c036c2346949cae27036ed8048b3c76205a358fd0ea32aed3125c2
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
