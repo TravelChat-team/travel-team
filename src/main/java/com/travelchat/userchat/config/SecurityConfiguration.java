@@ -59,6 +59,8 @@ public class SecurityConfiguration {
             .authorizeHttpRequests((authorizeHttpRequests) ->
                     authorizeHttpRequests
                             .requestMatchers(
+                "/index",
+                "/gs-guide-websocket",
                 "/api/v1/auth/**",
                 "/api/v*/auth/registration/**",
                 "/v2/api-docs",
