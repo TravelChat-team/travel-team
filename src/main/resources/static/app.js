@@ -52,9 +52,76 @@ function showGreeting(message) {
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 
+// Connect to a topic
+function connectToTopic(topic) {
+    const destination = "/topic/" + topic;
+
+    stompClient.subscribe(destination, (greeting) => {
+        showGreeting(JSON.parse(greeting.body).content);
+    });
+}
+
+// Connect to a private chat
+function connectToPrivateChat(topic, username) {
+    const destination = "/private/" + topic + "/" + username;
+
+    stompClient.subscribe(destination, (greeting) => {
+        showGreeting(JSON.parse(greeting.body).content);
+    });
+}
+
+// Send text to a topic or chat
+function sendTextTo(topic, text, username = null) {
+    const destination = username ? `/app/chat/${topic}/${username}` : `/app/hello`;
+
+    stompClient.publish({
+        destination: destination,
+        body: JSON.stringify({ 'text': text })
+    });
+}
+
+// Connect to a topic and send a message
+connectToTopic("sports");
+sendTextTo("sports", "Hey, any updates on the game?");
+
+// Connect to a private chat and send a message
+connectToPrivateChat("private-topic", "Alice");
+sendTextTo("private-topic", "Hello Alice, how are you?", "Bob");
+
 $(function () {
     $("form").on('submit', (e) => e.preventDefault());
-    $( "#connect" ).click(() => connect());
-    $( "#disconnect" ).click(() => disconnect());
-    $( "#send" ).click(() => sendText());
+
+    $("#connect").click(() => {
+        const selectedTopic = $("#topicSelect").val();
+        connectToTopic(selectedTopic);
+        connect();
+    });
+
+    $("#connectPrivate").click(() => {
+        const selectedTopic = $("#topicSelect").val();
+        const username = $("#privateUsername").val();
+        connectToPrivateChat(selectedTopic, username);
+        connect();
+    });
+
+    $("#disconnect").click(() => disconnect());
+    $("#send").click(() => {
+        const text = $("#text").val();
+        const selectedTopic = $("#topicSelect").val();
+        const username = $("#privateUsername").val();
+
+        if (username) {
+            sendTextTo(selectedTopic, text, username);
+        } else {
+            sendTextTo(selectedTopic, text);
+        }
+    });
 });
+
+
+// $(function () {
+//     $("form").on('submit', (e) => e.preventDefault());
+//     $( "#connect" ).click(() => connect());
+//     $( "#disconnect" ).click(() => disconnect());
+//     $( "#send" ).click(() => sendText());
+// });

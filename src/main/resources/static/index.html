@@ -17,7 +17,13 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
+                    <label for="connect">Connect to Topic:</label>
+                    <select id="topicSelect" class="form-control">
+                        <option value="greetings">Greetings</option>
+                        <option value="news">News</option>
+                        <option value="sports">Sports</option>
+                        <!-- Add more options as needed -->
+                    </select>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                     </button>
@@ -30,6 +36,10 @@
                     <label for="text">What is your message?</label>
                     <input type="text" id="text" class="form-control" placeholder="Your message here...">
                 </div>
+                <div class="form-group">
+                    <label for="privateUsername">Private Chat Username:</label>
+                    <input type="text" id="privateUsername" class="form-control" placeholder="Enter username">
+                </div>
                 <button id="send" class="btn btn-default" type="submit">Send</button>
             </form>
         </div>
@@ -39,7 +49,7 @@
             <table id="conversation" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Greetings</th>
+                    <th>Chat Messages</th>
                 </tr>
                 </thead>
                 <tbody id="greetings">

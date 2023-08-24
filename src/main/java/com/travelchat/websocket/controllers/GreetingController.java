@@ -16,11 +16,10 @@ public class GreetingController implements WebSocketController{
         return new Greeting("Hello write,    " + HtmlUtils.htmlEscape(message.getText()) + "!");
     }
 
+    @Override
+    public Greeting chatMessage(String topic, String username, Message message) throws Exception {
+        Thread.sleep(1000); // Simulated delay
+        return new Greeting(username + ": " + HtmlUtils.htmlEscape(message.getText()));
+    }
 
-//    @MessageMapping("/hello")
-//    @SendTo("/topic/greetings")
-//    public Greeting greeting(Message message) throws Exception {
-//        Thread.sleep(1000); // simulated delay
-//        return new Greeting("Hello write,    " + HtmlUtils.htmlEscape(message.getText()) + "!");
-//    }
 }
