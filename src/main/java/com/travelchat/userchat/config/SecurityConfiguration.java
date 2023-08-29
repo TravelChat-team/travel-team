@@ -70,7 +70,8 @@ public class SecurityConfiguration {
                 "/configuration/security",
                 "/swagger-ui/**",
                 "/webjars/**",
-                "/swagger-ui.html"
+                "/swagger-ui.html",
+                "/users/list"
         )
           .permitAll()
         .requestMatchers("/api/v1/management/**").hasAnyRole(Role.ADMIN.name(), Role.MANAGER.name())
