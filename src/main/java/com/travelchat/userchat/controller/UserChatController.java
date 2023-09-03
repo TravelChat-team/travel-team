@@ -23,14 +23,17 @@ import java.util.List;
 @RequestMapping("/users")
 @RequiredArgsConstructor
 public class UserChatController {
-    private final static int DELAY = 100;
-    private final UserChatRepository userChatRepository;
+        private final UserChatRepository userChatRepository;
     private final UserDetailsServiceImpl userchatService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/list")
     public List<UserChat> list() {
-        return new ArrayList<>(userChatRepository.findAll());
+        List<UserChat> chatList = new ArrayList<>(userChatRepository.findAll());
+
+        log.info("chatList {}", chatList);
+
+        return chatList;
     }
 
     @PostMapping()

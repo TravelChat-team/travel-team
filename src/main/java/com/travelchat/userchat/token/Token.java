@@ -2,6 +2,7 @@ package com.travelchat.userchat.token;
 
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.travelchat.userchat.userchat.UserChat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -78,6 +79,7 @@ public class Token {
   public boolean expired;
 
   @ManyToOne(fetch = FetchType.LAZY)
+  @JsonBackReference
   @JoinColumn(name = "userchat_id")
   public UserChat userChat;
 }
