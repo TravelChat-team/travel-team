@@ -1,4 +1,4 @@
-package com.travelchat.userchat.userchat;
+package com.travelchat.userchat.models;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;

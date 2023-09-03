@@ -1,4 +1,4 @@
-package com.travelchat.userchat.userchat;
+package com.travelchat.userchat.models;
 
 
 

@@ -2,8 +2,8 @@ package com.travelchat.userchat.config;
 
 
 import com.travelchat.userchat.auth.AuthenticationRequest;
-import com.travelchat.userchat.service.UserDetailsServiceImpl;
-import com.travelchat.userchat.userchat.UserChat;
+import com.travelchat.userchat.service.Impl.UserDetailsServiceImpl;
+import com.travelchat.userchat.models.UserChat;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;

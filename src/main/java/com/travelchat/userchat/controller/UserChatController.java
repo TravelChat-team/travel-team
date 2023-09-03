@@ -3,17 +3,18 @@ package com.travelchat.userchat.controller;
 
 
 import com.travelchat.userchat.auth.RegistrationRequest;
+import com.travelchat.userchat.dto.UserChatDto;
 import com.travelchat.userchat.repository.UserChatRepository;
-import com.travelchat.userchat.userchat.Role;
-import com.travelchat.userchat.userchat.UserChat;
-import com.travelchat.userchat.service.UserDetailsServiceImpl;
+import com.travelchat.userchat.models.Role;
+import com.travelchat.userchat.models.UserChat;
+import com.travelchat.userchat.service.Impl.UserChatServiceImpl;
+import com.travelchat.userchat.service.Impl.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -24,12 +25,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserChatController {
         private final UserChatRepository userChatRepository;
-    private final UserDetailsServiceImpl userchatService;
+    private final UserDetailsServiceImpl userDetailsService;
+    private final UserChatServiceImpl userchatService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/list")
-    public List<UserChat> list() {
-        List<UserChat> chatList = new ArrayList<>(userChatRepository.findAll());
+//    @GetMapping()
+    public List<UserChatDto> list() {
+        List<UserChatDto> chatList = userchatService.getAllUserchat();
 
         log.info("chatList {}", chatList);
 

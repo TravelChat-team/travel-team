@@ -1,4 +1,4 @@
-package com.travelchat.userchat.userchat;
+package com.travelchat.userchat.models;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.travelchat.userchat.userchat.Permission.*;
+import static com.travelchat.userchat.models.Permission.*;
 
 
 @RequiredArgsConstructor

@@ -1,7 +1,7 @@
 package com.travelchat.userchat.auth;
 
 import com.travelchat.userchat.auth.oauth.CustomOAuth2User;
-import com.travelchat.userchat.service.UserChatService;
+import com.travelchat.userchat.service.Impl.UserChatServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Lazy;
@@ -17,12 +17,12 @@ public class AuthenticationController {
 
 
     private final AuthenticationService authenticationService;
-    private final UserChatService userChatService;
+    private final UserChatServiceImpl userChatServiceImpl;
 
 
-    public AuthenticationController(@Lazy AuthenticationService authenticationService, UserChatService userChatService) {
+    public AuthenticationController(@Lazy AuthenticationService authenticationService, UserChatServiceImpl userChatServiceImpl) {
         this.authenticationService = authenticationService;
-        this.userChatService = userChatService;
+        this.userChatServiceImpl = userChatServiceImpl;
     }
 
 
@@ -47,7 +47,7 @@ public class AuthenticationController {
          String oauth2ClientName = oauth2User.getOauth2ClientName();
          String username = oauth2User.getEmail();
 
-         userChatService.updateAuthenticationType(username, oauth2ClientName);
+         userChatServiceImpl.updateAuthenticationType(username, oauth2ClientName);
          System.out.println("username = " + username);
          AuthenticationResponse authenticationResponse = authenticationService.authenticateOAuth(username);
         return ResponseEntity.ok(authenticationResponse);
