@@ -2,6 +2,7 @@ package com.travelchat.userchat.userchat;
 
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.travelchat.userchat.auth.AuthenticationType;
 import com.travelchat.userchat.token.Token;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -66,6 +67,7 @@ public class UserChat implements UserDetails {
     private AuthenticationType authType;
 
     @OneToMany(mappedBy = "userChat")
+    @JsonManagedReference
     private List<Token> tokens;
 
 
