@@ -2,7 +2,7 @@
 package com.travelchat.userchat.auth;
 
 
-import com.travelchat.userchat.userchat.Role;
+import com.travelchat.userchat.models.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

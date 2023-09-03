@@ -1,4 +1,4 @@
-package com.travelchat.userchat.service;
+package com.travelchat.userchat.service.Impl;
 
 
 
@@ -6,8 +6,8 @@ import com.travelchat.userchat.auth.AuthenticationType;
 import com.travelchat.userchat.repository.UserChatRepository;
 import com.travelchat.userchat.token.ConfirmationToken;
 import com.travelchat.userchat.token.ConfirmationTokenService;
-import com.travelchat.userchat.userchat.Role;
-import com.travelchat.userchat.userchat.UserChat;
+import com.travelchat.userchat.models.Role;
+import com.travelchat.userchat.models.UserChat;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,8 +20,8 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-import static com.travelchat.userchat.userchat.Constants.ADMIN_PASSWORD;
-import static com.travelchat.userchat.userchat.Constants.ADMIN_USERNAME;
+import static com.travelchat.userchat.models.Constants.ADMIN_PASSWORD;
+import static com.travelchat.userchat.models.Constants.ADMIN_USERNAME;
 
 
 @Slf4j

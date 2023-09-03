@@ -2,7 +2,7 @@ package com.travelchat.userchat.token;
 
 
 
-import com.travelchat.userchat.userchat.UserChat;
+import com.travelchat.userchat.models.UserChat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

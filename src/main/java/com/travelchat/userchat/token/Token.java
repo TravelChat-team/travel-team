@@ -3,7 +3,7 @@ package com.travelchat.userchat.token;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.travelchat.userchat.userchat.UserChat;
+import com.travelchat.userchat.models.UserChat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
