@@ -2,6 +2,7 @@ package com.travelchat.userchat.controller;
 
 
 
+import com.travelchat.userchat.auth.DeleteRequest;
 import com.travelchat.userchat.auth.RegistrationRequest;
 import com.travelchat.userchat.dto.UserChatDto;
 import com.travelchat.userchat.repository.UserChatRepository;
@@ -11,6 +12,9 @@ import com.travelchat.userchat.service.Impl.UserChatServiceImpl;
 import com.travelchat.userchat.service.Impl.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import lombok.val;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +61,20 @@ public class UserChatController {
 
         log.info("userChatSaved2 {}", userChatSaved);
         return userChatRepository.findById(userChatSaved.getId()).get();
+    }
+
+
+    //TODO change authentication after develop
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUserChat(@RequestBody DeleteRequest deleteRequest) {
+        var byEmail = userchatService.getByEmail(deleteRequest.getEmail());
+        userChatRepository.delete(byEmail);
+        // Here, you would typically perform the logic to delete the UserChat with the given id
+        // For the sake of this example, we'll assume the deletion is successful
+
+        // You can add your deletion logic here, e.g., userChatService.deleteUserChat(id);
+
+        return ResponseEntity.ok("UserChat #" + deleteRequest.getEmail() + " has been deleted.");
     }
 
 //    @GetMapping("/{id}")
