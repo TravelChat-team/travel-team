@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.travelchat.userchat.models.Constants.ADMIN_PASSWORD;
 import static com.travelchat.userchat.models.Constants.ADMIN_USERNAME;
@@ -74,5 +75,11 @@ public class UserChatServiceImpl implements UserChatService {
     @Override
     public UserChatDto getById(Long id) {
         return null;
+    }
+
+    @Override
+    public UserChat getByEmail(String email) {
+        return userChatRepository.findByEmail(email).orElseThrow();
+
     }
 }

@@ -47,6 +47,7 @@ public class UserChat implements UserDetails {
     private String firstName;
     private String lastName;
     private String username;
+    //TODO NotNull
     private String email;
     private String password;
 

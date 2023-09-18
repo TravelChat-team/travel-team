@@ -3,6 +3,7 @@ package com.travelchat.userchat.auth;
 
 import com.travelchat.userchat.config.CustomAuthenticationProvider;
 import com.travelchat.userchat.config.JwtService;
+import com.travelchat.userchat.models.Role;
 import com.travelchat.userchat.token.ConfirmationTokenService;
 import com.travelchat.userchat.token.Token;
 import com.travelchat.userchat.token.TokenRepository;
@@ -45,7 +46,7 @@ public class AuthenticationService {
                 .lastName(request.getLastname())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
+                .role(Role.USER)
                 .build();
         var savedUser = userChatRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
