@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: 17
+    # steps:
+  build:
+    commands:
+      - ./gradlew bootJar
+    # steps:
+  post_build:
+    commands:
+      - echo Build completed
+artifacts:
+  files:
+    - build/libs/*.jar
+    - scripts/*.sh
+    - appspec.yml
+#  name: TravelChat
+  discard-paths:  yes
