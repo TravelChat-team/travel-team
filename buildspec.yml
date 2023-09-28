@@ -5,9 +5,9 @@ phases:
     runtime-versions:
       java: corretto17
     # steps:
-  build:
-    commands:
-      - ./gradlew bootJar
+  # build:
+  #   commands:
+  #     - ./gradlew bootJar
     # steps:
   post_build:
     commands:
