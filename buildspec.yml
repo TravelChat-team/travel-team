@@ -20,5 +20,6 @@ artifacts:
     - build/libs/*.jar
     - scripts/*.sh
     - appspec.yml
+    - server_start.sh
 #  name: TravelChat
   discard-paths:  yes
