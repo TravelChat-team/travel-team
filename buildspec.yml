@@ -7,8 +7,10 @@ phases:
     # steps:
   build:
     commands:
+      - echo Build started on `date`
       - chmod +x ./gradlew
-      - ./gradlew bootJar
+#      - ./gradlew bootJar
+      - gradle build
       # steps:
   post_build:
     commands:
