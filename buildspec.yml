@@ -7,8 +7,9 @@ phases:
     # steps:
   build:
     commands:
+      - chmod +x ./gradlew
       - ./gradlew bootJar
-    # steps:
+      # steps:
   post_build:
     commands:
       - echo Build completed
