@@ -26,21 +26,21 @@ public class AuthenticationController {
     }
 
 
-    @PostMapping("/api/v1/registration")
+    @PostMapping("/registration")
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegistrationRequest request
     ) {
         return ResponseEntity.ok(authenticationService.register(request));
     }
 
-    @PostMapping("/api/v1/authenticate")
+    @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> authenticate(
             @RequestBody AuthenticationRequest request
     ) {
         return ResponseEntity.ok(authenticationService.authenticate(request));
     }
 
-    @GetMapping("/api/v1/oAuthAuthenticate")
+    @GetMapping("/oAuthAuthenticate")
     public ResponseEntity<AuthenticationResponse> oAuthAuthenticate(
            Authentication authentication)  {
          CustomOAuth2User oauth2User = (CustomOAuth2User) authentication.getPrincipal();
@@ -53,7 +53,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationResponse);
     }
 
-    @PostMapping("/api/v1/refresh-token")
+    @PostMapping("/refresh-token")
     public ResponseEntity<AuthenticationResponse> refreshToken(
             HttpServletRequest request,
             HttpServletResponse response
